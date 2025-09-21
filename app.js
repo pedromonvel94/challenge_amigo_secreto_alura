@@ -2,6 +2,7 @@
 let amigos = [];
 let campoTexto = document.getElementById("amigo"); 
 let listadoAmigos = document.getElementById("listaAmigos");
+let resultado = document.getElementById("resultado");
 
 
 function agregarAmigo(){
@@ -19,13 +20,26 @@ function agregarAmigo(){
     listadoAmigos.innerHTML = ""
 
     for(let i = 0; i < amigos.length; i++){
-        let nuevoLi = document.createElement("li");
+        let nuevoLiAmigos = document.createElement("li");
 
-        listadoAmigos.appendChild(nuevoLi); 
-        nuevoLi.textContent = amigos[i]; 
+        listadoAmigos.appendChild(nuevoLiAmigos); 
+        nuevoLiAmigos.textContent = amigos[i]; 
     }
 }
 
 function sortearAmigo(){
+    if(amigos.length === 0){
+        alert("No hay amigos para jugar");
+        return;
+    }
 
+    let indexAleatorio = Math.floor(Math.random() * amigos.length);
+    let amigoGanador = amigos[indexAleatorio];
+    
+    resultado.innerHTML = "";
+    let nuevoLiResultado = document.createElement("li");
+    resultado.appendChild(nuevoLiResultado);
+    nuevoLiResultado.textContent = amigoGanador;
+
+    
 }
